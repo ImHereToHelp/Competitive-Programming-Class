@@ -1,0 +1,36 @@
+class Solution {
+    public int[] sortArrayByParity(int[] A) {
+        int leftPointer = 0;
+        int rightPointer = A.length - 1;
+        
+        if(A.length == 1)
+            return A;
+        
+        while(leftPointer < rightPointer){
+            if(isEven(A[leftPointer])){
+                leftPointer++;
+                continue;
+            }
+            
+            if(isEven(A[rightPointer])){
+                swap(A, leftPointer, rightPointer);
+                leftPointer++;
+                rightPointer--;
+            }else{
+                rightPointer--;
+            }
+        }
+        return A;
+    }
+    
+    public boolean isEven(int num){
+        return num % 2 == 0;
+    }
+    
+    public void swap(int[] array, int i, int j){
+        int temp = array[j];
+        array[j] = array[i];
+        array[i] = temp;
+        
+    }    
+}

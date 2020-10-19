@@ -1,0 +1,27 @@
+/*The algorithim:
+We will have two pointers starting from the beginning and end of the array.
+While the left and right pointers do not cross each other, we will take both heights
+and calculate the area. We will save the largest max area seen so far and compare it
+to the current area and update if needed. After each iteration, we will shift the pointer on 
+the lowest height.
+*/
+
+class Solution {
+    public int maxArea(int[] height) {
+        int maxArea = 0;
+        int leftPointer = 0;
+        int rightPointer = height.length - 1;
+        
+        while(leftPointer < rightPointer){
+            maxArea = Math.max(maxArea, Math.min(height[leftPointer], height[rightPointer]) * (rightPointer - leftPointer));
+            
+            if(height[leftPointer] <= height[rightPointer]){
+                leftPointer++;
+            }else{
+                rightPointer--;
+            }
+        }
+        
+        return maxArea;
+    }
+}

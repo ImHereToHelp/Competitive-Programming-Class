@@ -1,0 +1,55 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode head1 = l1;
+        ListNode head2 = l2;
+        int sum = 0;
+        int carry = 0;
+        int x;
+        int y;
+        
+        //sumHead will be the sum of both numbers represented by l1 and l2.
+        //current is a pointer that will travel along sumHead.
+        ListNode sumHead = new ListNode(0);
+        ListNode current = sumHead;
+        while(head1 != null || head2 != null){
+            
+            //These two if statements iterate through both linked lists. The else statement
+            //represents a leading zero and ensures we don't get a NullPointerException.
+            if(head1 != null){
+                x = head1.val;
+                head1 = head1.next;
+            }else{
+                x = 0;
+            }
+            if(head2 != null){
+                y = head2.val;
+                head2 = head2.next;
+            }else{
+                y = 0;
+            }
+
+            //This chunk of code does the arithmetic.
+            sum = x + y + carry;
+            current.next = new ListNode(sum % 10);
+            carry = sum / 10;
+            current = current.next;
+            
+        }
+        
+        if(carry > 0){
+            current.next = new ListNode(carry);
+        }
+        
+        return sumHead.next;
+    }
+}

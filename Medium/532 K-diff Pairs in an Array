@@ -1,0 +1,40 @@
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        int count = 0;
+        HashSet<Integer> setOfNums = new HashSet<>();
+        HashSet<Integer> usedNums = new HashSet<>();
+
+
+        //Edge case if k == 0
+         if(k == 0){
+            for(int i = 0; i < nums.length; i++){
+                if(setOfNums.contains(nums[i]) && !usedNums.contains(nums[i])){
+                    count++;
+                    usedNums.add(nums[i]);
+                }
+                setOfNums.add(nums[i]);
+            }
+            return count;
+        }
+        
+        //For all other cases
+
+        //Add all the numbers in the array to setOfNums
+        for(int i = 0; i < nums.length; i++){
+            setOfNums.add(nums[i]);
+        }
+        
+        //Iterate through the array and see if nums[i] + k is in it. If it is, increment count and add nums[i] to usedNums to not have repeats.
+        for(int i = 0; i < nums.length; i++){
+            if(usedNums.contains(nums[i])){
+                continue;
+            }
+            if(setOfNums.contains(nums[i] + k)){
+                count++;
+                usedNums.add(nums[i]);
+            }
+            
+        }
+        return count;
+      }                   
+}

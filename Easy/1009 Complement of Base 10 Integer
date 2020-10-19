@@ -1,0 +1,26 @@
+class Solution {
+    public int bitwiseComplement(int N) {
+        int numBits = 0;
+        int complement = 0;
+        
+        if(N == 0)
+            return 1;
+        
+        while(N >= (int)Math.pow(2, numBits))
+            numBits++;
+        numBits--;
+        
+        while(numBits >= 0){
+            int powerOfTwo = (int)Math.pow(2,numBits);
+            if(N - powerOfTwo >= 0){
+                N -= powerOfTwo;
+                numBits--;
+            }else{
+                complement += powerOfTwo;
+                numBits--;
+            }
+        }
+        
+        return complement;
+    }
+}

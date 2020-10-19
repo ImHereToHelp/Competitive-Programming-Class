@@ -1,0 +1,23 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+       int writepointer = 0;
+        int n = nums.length;
+        
+        if(n < 2)
+            return;
+        
+        for(int readpointer = 0; readpointer < n; readpointer++){
+           if(nums[readpointer] == 0){
+               continue;
+           }else{
+               nums[writepointer] = nums[readpointer];
+               writepointer++;
+           }
+            
+        }
+        
+        while(writepointer < n)
+            nums[writepointer++] = 0;
+    }
+   
+}

@@ -1,0 +1,27 @@
+class Solution {
+    public boolean checkIfExist(int[] arr) {
+        Set<Integer> set =new HashSet<Integer>();
+        
+        int zeroCount = 0;
+        
+        for(int i = 0; i<arr.length; i++){
+            set.add(arr[i]*2);
+            if(arr[i] == 0 ){
+                zeroCount++;
+            }
+        }
+        
+        
+        for(int j = 0; j<arr.length; j++){
+            if(set.contains(arr[j]) && arr[j] != 0)
+                return true;
+        }
+        
+         if(zeroCount > 1){
+            return true;
+        }
+        
+        return false;
+            
+    }
+}
