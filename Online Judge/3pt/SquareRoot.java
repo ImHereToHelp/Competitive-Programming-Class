@@ -1,3 +1,8 @@
+/* Algorithm:
+We employ a binary search between 0 and num, which is the number we are square rooting. We are searching for a number which multiplied by itself will give us num. It really is that simple!
+Except the BigInteger class makes it look very ugly. Unfortunately, we need BigInteger since the constraints state that the number can be very large.
+*/
+
 import java.math.BigInteger;
 import java.util.Scanner;
 
